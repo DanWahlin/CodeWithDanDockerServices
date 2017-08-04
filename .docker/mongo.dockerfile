@@ -18,7 +18,7 @@ ENTRYPOINT ["/mongo_scripts/run.sh"]
 
 
 # To build:
-# docker build -f docker-mongo.dockerfile --tag danwahlin/mongo ../
+# docker build -f mongo.dockerfile --tag danwahlin/mongo ../
 
 # To run the image (add -d if you want it to run in the background)
 # docker run -p 27017:27017 --env-file .docker/mongo.development.env -d --name mongo danwahlin/mongo

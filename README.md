@@ -1,7 +1,6 @@
 #### Docker Services Orchestration Demonstration
 
-This is a demo application from the [Docker for Web Developers](https://www.pluralsight.com/courses/docker-web-development) course on Pluralsight 
-that demonstrates how multiple services can be integrated and orchestrated using Docker and Docker Compose.
+This is a demo application from the [Docker for Web Developers](https://www.pluralsight.com/courses/docker-web-development) course on Pluralsight that demonstrates how multiple services can be integrated and orchestrated using Docker and Docker Compose.
 
 1. Install Docker for Mac or Docker for Windows from http://docker.com
 1. Set APP_ENV environment variable (using "set" rather than "export" for Windows):
@@ -19,8 +18,8 @@ that demonstrates how multiple services can be integrated and orchestrated using
 
 *Note:* You won't see any data in the page that displays in the browser. To seed the database run the following:
 
-`docker exec -it node-codewithdan-1 bash`
+`docker exec -it node-codewithdan-1 sh`
 
 `node dbSeeder.js`
 
-Press `ctrl-c` to exit the shell. You can close the dbSeeder command prompt once you're done.
+Type `exit` and press `ctrl-c` to exit the shell. You can close the dbSeeder command prompt once you're done.
