@@ -22,7 +22,8 @@ var express                 = require('express'),
     db                      = require('./lib/database'),
     redisClient             = require('./lib/redisClient'),
     productTypeRepository   = require('./lib/productTypeRepository'),
-    routes                  = require('./routes/router.js'),
+    //routes                = require('./routes/router.js'),
+    router                  = require('express-convention-routes'),
     port                    = process.env.PORT || 8080,
     app                     = express(),
     config                  = require('./lib/configLoader');
@@ -121,7 +122,18 @@ process.on('SIGINT', function() {
 //*********************************************************
 //    Convention based route loading 
 //*********************************************************
-routes.load(app, './controllers');
+//routes.load(app, './controllers');
+
+router.load(app, {
+   //Defaults to "./controllers" but showing for example
+   routesDirectory: './controllers', 
+
+   //Root directory where your server is running
+   rootDirectory: __dirname,
+   
+   //Do you want the created routes to be shown in the console?
+   logRoutes: true
+});
 
 //Handle any routes that are unhandled and return 404
 app.use(function(req, res, next) {    

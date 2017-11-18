@@ -6,7 +6,7 @@
     # 4. Run docker-compose up
     # 5. Live long and prosper
     
-version: "2"
+version: "3.1"
  
 services:
     nginx:
@@ -38,6 +38,9 @@ services:
       working_dir: /var/www/codewithdan
       env_file:
         - ./.docker/env/app.${APP_ENV}.env
+      depends_on:
+        - mongo
+        - redis
       networks:
         - codewithdan-network
       
@@ -54,6 +57,9 @@ services:
       working_dir: /var/www/codewithdan
       env_file:
         - ./.docker/env/app.${APP_ENV}.env
+      depends_on:
+        - mongo
+        - redis
       networks:
         - codewithdan-network
       
@@ -70,6 +76,9 @@ services:
       working_dir: /var/www/codewithdan
       env_file:
         - ./.docker/env/app.${APP_ENV}.env
+      depends_on:
+        - mongo
+        - redis
       networks:
         - codewithdan-network
       
