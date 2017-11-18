@@ -1,5 +1,7 @@
 FROM 		node:latest
 
+LABEL author="Dan Wahlin"
+
 COPY    . /var/www/codewithdan
 WORKDIR /var/www/codewithdan
 

@@ -1,6 +1,6 @@
 FROM mongo:latest
 
-MAINTAINER Dan Wahlin
+LABEL author="Dan Wahlin"
 
 # Make sure necessary packages are installed
 RUN apt-get update && apt-get install -y cron netcat-traditional netcat-openbsd

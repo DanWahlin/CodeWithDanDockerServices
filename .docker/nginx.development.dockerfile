@@ -1,6 +1,6 @@
 FROM nginx:latest
 
-MAINTAINER Dan Wahlin
+LABEL author="Dan Wahlin"
 
 VOLUME /var/cache/nginx
 
