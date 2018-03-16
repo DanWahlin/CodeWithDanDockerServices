@@ -1,4 +1,4 @@
-FROM mongo:3.4.10
+FROM mongo
 
 LABEL author="Dan Wahlin"
 
