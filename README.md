@@ -2,7 +2,7 @@
 
 This is a demo application from the [Docker for Web Developers](https://www.pluralsight.com/courses/docker-web-development) course on Pluralsight that demonstrates how multiple services can be integrated and orchestrated using Docker and Docker Compose.
 
-1. Install Docker for Mac or Docker for Windows from http://docker.com
+1. Install Docker CE for Mac or Docker CE for Windows from http://docker.com
 1. Set APP_ENV environment variable (use "set" rather than "export" for Windows the windows command shell):
 
       `export APP_ENV=development`
@@ -24,3 +24,9 @@ This is a demo application from the [Docker for Web Developers](https://www.plur
 `node dbSeeder.js`
 
 Type `exit` and press `ctrl-c` to exit the shell. You can close the dbSeeder command prompt once you're done.
+
+#### Note for Docker Toolbox Users
+
+If you're on Docker Toolbox rather than Docker CE you may get an nginx gateway error when going to http://localhost. This is due
+to "localhost" being used as the server name in .docker/config/nginx.development.conf (that works for Docker CE - the latest version - but not for Docker Toolbox). Comment out the existing "server_name" property and
+uncomment the one mentioned for Docker Toolbox in the .docker/config/nginx.development.conf file.
