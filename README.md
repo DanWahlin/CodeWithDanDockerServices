@@ -3,7 +3,7 @@
 This is a demo application from the [Docker for Web Developers](https://www.pluralsight.com/courses/docker-web-development) course on Pluralsight that demonstrates how multiple services can be integrated and orchestrated using Docker and Docker Compose.
 
 1. Install Docker for Mac or Docker for Windows from http://docker.com
-1. Set APP_ENV environment variable (using "set" rather than "export" for Windows):
+1. Set APP_ENV environment variable (use "set" rather than "export" for Windows the windows command shell):
 
       `export APP_ENV=development`
 
@@ -11,6 +11,7 @@ This is a demo application from the [Docker for Web Developers](https://www.plur
 
       `export DOCKER_ACCT=<yourHubUserName>`
 
+1. Run `npm install` to install the Node.js dependencies for the project (when running containers in development mode since a volume is defined docker-compose.yml file)
 1. Run `docker-compose build`
 1. Run `docker-compose up`
 1. Visit http://localhost in a browser
