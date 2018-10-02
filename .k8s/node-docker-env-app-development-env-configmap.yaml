@@ -1,0 +1,9 @@
+apiVersion: v1
+data:
+  NODE_ENV: development
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: node-docker-env-app-development-env
+  name: node-docker-env-app-development-env

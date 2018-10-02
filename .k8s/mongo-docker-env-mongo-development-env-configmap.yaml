@@ -1,0 +1,15 @@
+apiVersion: v1
+data:
+  MONGODB_DBNAME: codeWithDan
+  MONGODB_PASSWORD: password
+  MONGODB_ROLE: readWrite
+  MONGODB_ROOT_PASSWORD: password
+  MONGODB_ROOT_ROLE: root
+  MONGODB_ROOT_USERNAME: dbadmin
+  MONGODB_USERNAME: webrole
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: mongo-docker-env-mongo-development-env
+  name: mongo-docker-env-mongo-development-env
