@@ -30,3 +30,19 @@ Type `exit` and press `ctrl-c` to exit the shell. You can close the dbSeeder com
 If you're on Docker Toolbox rather than Docker CE you may get an nginx gateway error when going to http://localhost. This is due
 to "localhost" being used as the server name in .docker/config/nginx.development.conf (that works for Docker CE - the latest version - but not for Docker Toolbox). Comment out the existing "server_name" property and
 uncomment the one mentioned for Docker Toolbox in the .docker/config/nginx.development.conf file.
+
+#### To run in Kubernetes with Docker Desktop on Mac
+
+1. Do a production Docker Compose build (see docker-compose.yml for instructions) to create the local images
+1. Enable Kubernetes in Docker Desktop (Mac)
+1. Open a command-prompt at the root of the project
+1. Run `kubectl apply -f .k8s/`
+1. Once the deployments are applied several pods will be created. 
+1. To expose a port for localhost, get the name of the `nginx` pod by running `kubectl get pods` and use the pod name in the following command
+
+      `sudo kubectl port-forward [name-of-nginx-pod] 80:80`
+
+      Note that sudo is needed to enable port 80 in this case. You can choose a different port as well such as 8080:80.
+
+1. Open the browser and go to http://localhost
+
