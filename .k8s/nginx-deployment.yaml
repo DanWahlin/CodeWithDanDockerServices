@@ -19,6 +19,7 @@ spec:
     spec:
       containers:
       - image: danwahlin/nginx
+        imagePullPolicy: IfNotPresent
         name: nginx
         ports:
         - containerPort: 80

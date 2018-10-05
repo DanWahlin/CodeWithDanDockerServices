@@ -26,6 +26,7 @@ spec:
               key: NODE_ENV
               name: node-docker-env-app-development-env
         image: danwahlin/node-codewithdan
+        imagePullPolicy: IfNotPresent
         name: node-codewithdan
         ports:
         - containerPort: 8080

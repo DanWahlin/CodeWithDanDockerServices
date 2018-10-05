@@ -19,6 +19,7 @@ spec:
     spec:
       containers:
       - image: danwahlin/redis
+        imagePullPolicy: IfNotPresent
         name: redis
         ports:
         - containerPort: 6379

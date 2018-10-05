@@ -55,6 +55,7 @@ spec:
               key: MONGODB_USERNAME
               name: mongo-docker-env-mongo-development-env
         image: danwahlin/mongo
+        imagePullPolicy: IfNotPresent
         name: mongo
         ports:
         - containerPort: 27017

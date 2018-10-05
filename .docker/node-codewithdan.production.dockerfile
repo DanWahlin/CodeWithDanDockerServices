@@ -2,8 +2,9 @@ FROM node:alpine
 
 LABEL author="Dan Wahlin"
 
-COPY    . /var/www/codewithdan
 WORKDIR /var/www/codewithdan
+
+COPY    . .
 
 RUN npm install -g pm2@latest
 
