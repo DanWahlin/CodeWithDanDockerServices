@@ -31,13 +31,5 @@ spec:
         ports:
         - containerPort: 8080
         resources: {}
-        volumeMounts:
-        - mountPath: /var/www/codewithdan
-          name: node-claim0
-        workingDir: /var/www/codewithdan
       restartPolicy: Always
-      volumes:
-      - name: node-claim0
-        persistentVolumeClaim:
-          claimName: node-claim0
 status: {}

@@ -72,7 +72,12 @@ app.use(csurf());
 app.use(productTypeRepository.injectProductTypes);
 
 //Pass database config settings
-db.init(config.databaseConfig);
+//Simple work around to wait for MongoDB to start 
+//NO....NOT FOR PRODUCTION
+setTimeout(() => {
+    db.init(config.databaseConfig);
+}, 5000);
+
 
 //Pass redis config settings
 redisClient.connect();
