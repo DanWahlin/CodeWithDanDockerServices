@@ -111,6 +111,19 @@ services:
         - "6379"
       networks:
         - codewithdan-network
+
+    # cadvisor:
+    #   container_name: cadvisor
+    #   image: google/cadvisor
+    #   volumes:
+    #     - /:/rootfs:ro
+    #     - /var/run:/var/run:rw
+    #     - /sys:/sys:ro
+    #     - /var/lib/docker/:/var/lib/docker:ro
+    #   ports:
+    #     - "8080:8080"
+    #   networks:
+    #     - codewithdan-network
         
 networks:
     codewithdan-network:
