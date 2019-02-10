@@ -42,7 +42,7 @@ uncomment the one mentioned for Docker Toolbox in the .docker/config/nginx.devel
 
       `sudo kubectl port-forward [name-of-nginx-pod] 80:80`
 
-      Note that sudo is needed to enable port 80 in this case. You can choose a different port as well such as 8080:80.
+      Note that sudo is needed to enable port 80 in this case. You can choose a different port as well such as 8080:80. If on Windows run the command window as administrator.
 
 1. Open the browser and go to http://localhost
 
