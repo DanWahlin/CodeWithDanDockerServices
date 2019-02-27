@@ -2,7 +2,7 @@
 
 This is a demo application from the [Docker for Web Developers](https://www.pluralsight.com/courses/docker-web-development) course on Pluralsight that demonstrates how multiple services can be integrated and orchestrated using Docker and Docker Compose.
 
-1. Install Docker CE for Mac or Docker CE for Windows from http://docker.com
+1. Install Docker CE for Mac or Docker CE for Windows from https://docker.com and the lastest LTS version of Node.js from https://nodejs.org.
 1. Set APP_ENV environment variable (use "set" rather than "export" for Windows the windows command shell):
 
       `export APP_ENV=development`
