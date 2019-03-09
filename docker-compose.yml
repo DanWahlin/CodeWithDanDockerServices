@@ -1,9 +1,12 @@
     # 1. Update config values (localhost --> mongo and localhost --> redis) in config.development.json
-    # 2. Set APP_ENV environment variable 
-    #    Use `set` instead of `export` for the standard Windows command shell
+    # 2. Set APP_ENV environment variable by running the following command in your commnand window. 
+    #    NOTE: If you're on Windows see the notes below the commands.
 
     #    export APP_ENV=development or export APP_ENV=production
     #    export DOCKER_ACCT=<yourHubUserName>
+
+    #    For the standard Windows command shell use `set` instead of `export`
+    #    For Windows Powershell you'll need to use $env:APP_ENV = "value" 
     
     # 3. Remove "node" service volume (below) if doing a production build
     # 4. Run docker-compose build
