@@ -3,9 +3,11 @@
 This is a demo application from the [Docker for Web Developers](https://www.pluralsight.com/courses/docker-web-development) course on Pluralsight that demonstrates how multiple services can be integrated and orchestrated using Docker and Docker Compose.
 
 1. Install Docker CE for Mac or Docker CE for Windows from https://docker.com and the lastest LTS version of Node.js from https://nodejs.org.
-1. Set APP_ENV environment variable (use "set" rather than "export" for Windows the windows command shell):
+1. Set APP_ENV environment variable in your command window. NOTE: If you're on Windows see the info below the commands.
 
       `export APP_ENV=development`
+
+For the standard Windows command shell use `set` instead of `export`. For Windows Powershell you'll need to use `$env:APP_ENV = "value"`.
 
 1. Set your Docker Hub account (any string value will work if you don't have an account):
 
