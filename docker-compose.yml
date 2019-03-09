@@ -1,4 +1,4 @@
-    # 1. Update config values (localhost --> mongo and localhost --> redis) in config.development.json
+    # 1. Update config values (localhost --> mongo and localhost --> redis) in config/config.development.json
     # 2. Set APP_ENV environment variable by running the following command in your commnand window. 
     #    NOTE: If you're on Windows see the notes below the commands.
 
