@@ -1,29 +1,24 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert
-    kompose.version: 1.16.0 (0c01309)
-  creationTimestamp: null
   labels:
-    io.kompose.service: nginx
+    app: nginx
   name: nginx
 spec:
   replicas: 1
-  strategy: {}
+  selector:
+    matchLabels:
+      app: nginx
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        io.kompose.service: nginx
+        app: nginx
     spec:
       containers:
-      - image: danwahlin/nginx
+      - image: codewithdan/nginx
         imagePullPolicy: IfNotPresent
         name: nginx
         ports:
         - containerPort: 80
         - containerPort: 443
         resources: {}
-      restartPolicy: Always
-status: {}

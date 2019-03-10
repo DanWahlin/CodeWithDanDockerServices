@@ -1,22 +1,18 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert
-    kompose.version: 1.16.0 (0c01309)
-  creationTimestamp: null
   labels:
-    io.kompose.service: node
+    app: node
   name: node
 spec:
   replicas: 1
-  strategy:
-    type: Recreate
+  selector:
+    matchLabels:
+      app: node
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        io.kompose.service: node
+        app: node
     spec:
       containers:
       - env:
@@ -24,12 +20,10 @@ spec:
           valueFrom:
             configMapKeyRef:
               key: NODE_ENV
-              name: node-docker-env-app-development-env
-        image: danwahlin/node-codewithdan
+              name: node-env
+        image: codewithdan/node-codewithdan
         imagePullPolicy: IfNotPresent
         name: node-codewithdan
         ports:
         - containerPort: 8080
         resources: {}
-      restartPolicy: Always
-status: {}

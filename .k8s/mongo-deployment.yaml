@@ -1,21 +1,18 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert
-    kompose.version: 1.16.0 (0c01309)
-  creationTimestamp: null
   labels:
-    io.kompose.service: mongo
+    app: mongo
   name: mongo
 spec:
   replicas: 1
-  strategy: {}
+  selector:
+    matchLabels:
+      app: mongo
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        io.kompose.service: mongo
+        app: mongo
     spec:
       containers:
       - env:
@@ -23,42 +20,40 @@ spec:
           valueFrom:
             configMapKeyRef:
               key: MONGODB_DBNAME
-              name: mongo-docker-env-mongo-development-env
+              name: mongo-env
         - name: MONGODB_PASSWORD
           valueFrom:
             configMapKeyRef:
               key: MONGODB_PASSWORD
-              name: mongo-docker-env-mongo-development-env
+              name: mongo-env
         - name: MONGODB_ROLE
           valueFrom:
             configMapKeyRef:
               key: MONGODB_ROLE
-              name: mongo-docker-env-mongo-development-env
+              name: mongo-env
         - name: MONGODB_ROOT_PASSWORD
           valueFrom:
             configMapKeyRef:
               key: MONGODB_ROOT_PASSWORD
-              name: mongo-docker-env-mongo-development-env
+              name: mongo-env
         - name: MONGODB_ROOT_ROLE
           valueFrom:
             configMapKeyRef:
               key: MONGODB_ROOT_ROLE
-              name: mongo-docker-env-mongo-development-env
+              name: mongo-env
         - name: MONGODB_ROOT_USERNAME
           valueFrom:
             configMapKeyRef:
               key: MONGODB_ROOT_USERNAME
-              name: mongo-docker-env-mongo-development-env
+              name: mongo-env
         - name: MONGODB_USERNAME
           valueFrom:
             configMapKeyRef:
               key: MONGODB_USERNAME
-              name: mongo-docker-env-mongo-development-env
-        image: danwahlin/mongo
+              name: mongo-env
+        image: codewithdan/mongo
         imagePullPolicy: IfNotPresent
         name: mongo
         ports:
         - containerPort: 27017
         resources: {}
-      restartPolicy: Always
-status: {}
