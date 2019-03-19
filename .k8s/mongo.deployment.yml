@@ -1,0 +1,121 @@
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: local-storage
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer
+
+---
+
+# Note: While a local storage PV works, going with a more durable solution (NFS, cloud option, etc.) is recommended
+# Adding this for demo purposes to run on Docker Desktop Kubernetes since it only supports a single Node
+# https://kubernetes.io/blog/2018/04/13/local-persistent-volumes-beta/
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongo-pv
+spec:
+  capacity:
+    storage: 1Gi
+  # volumeMode block feature gate enabled by default with 1.13+
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  local:
+    path: /tmp/data/db
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - docker-desktop
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mongo-pvc
+spec:
+  # selector:
+  #   matchLabels:
+  #     volume: mongo
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: local-storage
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mongo
+  name: mongo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongo
+  template:
+    metadata:
+      labels:
+        app: mongo
+    spec:
+      volumes:
+      - name: mongo-volume
+        persistentVolumeClaim:
+          claimName: mongo-pvc
+      containers:
+      - env:
+        - name: MONGODB_DBNAME
+          valueFrom:
+            configMapKeyRef:
+              key: MONGODB_DBNAME
+              name: mongo-env
+        - name: MONGODB_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              key: MONGODB_PASSWORD
+              name: mongo-env
+        - name: MONGODB_ROLE
+          valueFrom:
+            configMapKeyRef:
+              key: MONGODB_ROLE
+              name: mongo-env
+        - name: MONGODB_ROOT_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              key: MONGODB_ROOT_PASSWORD
+              name: mongo-env
+        - name: MONGODB_ROOT_ROLE
+          valueFrom:
+            configMapKeyRef:
+              key: MONGODB_ROOT_ROLE
+              name: mongo-env
+        - name: MONGODB_ROOT_USERNAME
+          valueFrom:
+            configMapKeyRef:
+              key: MONGODB_ROOT_USERNAME
+              name: mongo-env
+        - name: MONGODB_USERNAME
+          valueFrom:
+            configMapKeyRef:
+              key: MONGODB_USERNAME
+              name: mongo-env
+        image: codewithdan/mongo
+        imagePullPolicy: IfNotPresent
+        name: mongo
+        ports:
+        - containerPort: 27017
+        resources: {}        
+        volumeMounts:
+        - name: mongo-volume
+          mountPath: /data/db

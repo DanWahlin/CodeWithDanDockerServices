@@ -78,8 +78,6 @@ setTimeout(() => {
     db.init(config.databaseConfig);
 }, 5000);
 
-
-//Pass redis config settings
 redisClient.connect();
 
 //Handle each request and ensure proper locals are set that are needed by app
