@@ -22,17 +22,26 @@ If you're on Docker Toolbox rather than Docker CE you may get an nginx gateway e
 to "localhost" being used as the server name in .docker/config/nginx.development.conf (that works for Docker CE - the latest version - but not for Docker Toolbox). Comment out the existing "server_name" property and
 uncomment the one mentioned for Docker Toolbox in the .docker/config/nginx.development.conf file.
 
-#### To run in Kubernetes with Docker Desktop on Mac
+#### To run in Kubernetes with Docker Desktop
 
-1. Enable Kubernetes in Docker Desktop (Mac).
+1. Enable Kubernetes in Docker Desktop.
 
       Note: `You MUST have Docker Desktop` for this particular demo to work. 
 
 1. Do a `production` Docker Compose build (see `docker-compose.yml` for instructions on doing the build) to create the local images
+1. Create the following folder structure on your machine to support the local storage persistent volume and storage class:
+
+      Mac/Linux: `/tmp/data/db`
+      Windows:   `c:/temp/data/db`
+
 1. Open a command-prompt at the root of the project
 1. Run `kubectl create -f .k8s` to create the Kubernetes Services, Deployments, Pods, etc.
 1. Once the deployments are applied several pods will be created. 
-1. Open the browser and go to http://localhost. 
+1. Open the browser and go to http://localhost. Read note below.
+
+NOTE: You'll need to wait since it'll take a little bit for the DB to start up since the app has to copy its files
+to the local storage volume, initialize the DB, and seed the database. Wait around 45 - 60 seconds and then hit refresh
+a few times. Once everything is loaded and ready you should see data in the app.
 
 This demo includes a LoadBalancer service for nginx which is why you can hit http://localhost. 
 To expose a specific port for localhost for the nginx Pod, get the name of the `nginx` pod by running 
@@ -40,5 +49,6 @@ To expose a specific port for localhost for the nginx Pod, get the name of the `
 
 `sudo kubectl port-forward [name-of-nginx-pod] 8080:80`
 
-Note that sudo is needed to enable port 80 in this case on Mac. You can choose a different port as well such as 8081:80. If on Windows run the command window as administrator.
+Note that sudo is needed to enable port 80 in this case on Mac. You can choose a different port as well such as 8081:80. If you run into issues with this on
+Windows run the command window as administrator.
 
