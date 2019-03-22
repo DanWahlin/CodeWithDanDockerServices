@@ -1,4 +1,4 @@
-#### Docker Services Orchestration Demonstration
+#### Docker Services Orchestration Demonstration (Kubernetes Orchestration demo also available)
 
 This is a demo application from the [Docker for Web Developers](https://www.pluralsight.com/courses/docker-web-development) course on Pluralsight that demonstrates how multiple services can be integrated and orchestrated using Docker and Docker Compose.
 
