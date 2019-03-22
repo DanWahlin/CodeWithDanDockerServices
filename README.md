@@ -26,15 +26,20 @@ uncomment the one mentioned for Docker Toolbox in the .docker/config/nginx.devel
 
 1. Enable Kubernetes in Docker Desktop.
 
-      Note: `You MUST have Docker Desktop` for this particular demo to work. 
+      Note: `You MUST have Docker Desktop` for this particular demo to work or another local Kubernetes option such as Minikube.
 
 1. Do a `production` Docker Compose build (see `docker-compose.yml` for instructions on doing the build) to create the local images
-1. Create the following folder structure on your machine to support the local storage persistent volume and storage class:
+1. Create the following folder structure on your machine to support the local storage persistent volume and storage class (demo type of volume):
 
       Mac/Linux: `/tmp/data/db`
       Windows:   `c:/temp/data/db`
 
+1. If you're on Windows go into `.k8s/mongo.deployment.yml` and change the PersistentVolume's local path to `/c/temp/data/db`. Save the file.
 1. Open a command-prompt at the root of the project
+1. Run the following to add the database passwords as secrets (yes - these are simple passwords for the demo :-)):
+
+    `kubectl create secret generic db-passwords --from-literal=db-password='password' --from-literal=db-root-password='password'`
+
 1. Run `kubectl create -f .k8s` to create the Kubernetes Services, Deployments, Pods, etc.
 1. Once the deployments are applied several pods will be created. 
 1. Open the browser and go to http://localhost. Read note below.
@@ -49,6 +54,5 @@ To expose a specific port for localhost for the nginx Pod, get the name of the `
 
 `sudo kubectl port-forward [name-of-nginx-pod] 8080:80`
 
-Note that sudo is needed to enable port 80 in this case on Mac. You can choose a different port as well such as 8081:80. If you run into issues with this on
-Windows run the command window as administrator.
+Note that sudo is needed to enable port 80 in this case on Mac. You can choose a different port as well such as 8081:80. If you run into issues with this on Windows run the command window as administrator.
 
