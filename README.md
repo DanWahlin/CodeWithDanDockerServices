@@ -48,6 +48,9 @@ NOTE: You'll need to wait since it'll take a little bit for the DB to start up s
 to the local storage volume, initialize the DB, and seed the database. Wait around 45 - 60 seconds and then hit refresh
 a few times. Once everything is loaded and ready you should see data in the app.
 
+1. When you're done run `kubectl delete -f .k8s` to delete the Kubernetes resources. Not that the volume mentioned earlier will still be there
+so you'll have to manully clean up the data/db folder.
+
 This demo includes a LoadBalancer service for nginx which is why you can hit http://localhost. 
 To expose a specific port for localhost for the nginx Pod, get the name of the `nginx` pod by running 
 `kubectl get pods` and use the pod name in the following command:
