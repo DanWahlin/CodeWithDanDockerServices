@@ -5,13 +5,12 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     concat = require('gulp-concat'),
     plumber = require('gulp-plumber'),
-    templateCache = require('gulp-angular-templatecache'),
     jsPath = 'public/js/*.js',
     jsDist = 'public/js/dist',
-    es6FilesPath = 'public/js/*.es6.js';
+    es2015Path = 'public/js/*.es6.js';
 
 gulp.task('sass', function() {
-    gulp.src('public/css/styles.scss')
+    return gulp.src('public/css/styles.scss')
         .pipe(plumber())
         .pipe(sass({ errLogToConsole: true }))
         .pipe(csso())
@@ -19,15 +18,18 @@ gulp.task('sass', function() {
 });
 
 gulp.task('babel', function () {
-    return gulp.src([
-            es6FilesPath
-         ])
-        .pipe(babel())
-        .pipe(gulp.dest('public/js/compiled'));;
+    return gulp.src([es2015Path])
+        .pipe(plumber())
+        .pipe(sourcemaps.init())
+        .pipe(babel({
+			presets: ['@babel/env']
+		}))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest(compilePath));
 });
 
 gulp.task('compressScripts', function() {
-    gulp.src([
+    return gulp.src([
         jsPath
     ])
         .pipe(concat('scripts.min.js'))
@@ -35,40 +37,17 @@ gulp.task('compressScripts', function() {
         .pipe(gulp.dest(jsDist));
 });
 
-gulp.task('compressCartApp', function() {
-    gulp.src([
-        'public/app/app.js',
-        'public/app/services/*.js',
-        'public/app/controllers/*.js',
-        'public/app/filters/*.js',
-        'public/app/directives/*.js'
-    ])
-        .pipe(concat('cartApp.min.js'))
-        .pipe(uglify())
-        .pipe(gulp.dest(jsDist));
-});
-
-gulp.task('templates', function() {
-    gulp.src('public/app/views/**/*.html')
-        .pipe(templateCache({ root: 'app/views', module: 'codeWithDan' }))
-        .pipe(gulp.dest(jsDist));
-});
-
 gulp.task('watch', function() {
 
-    gulp.watch('public/css/*.scss', ['sass']);
+    gulp.watch('public/css/*.scss', gulp.series('sass'));
 
     gulp.watch([
         'public/js/*.js' /*,
         '!public/js/compiled',
         '!public/js/lib' */],
-        ['compressScripts']);
-
-    gulp.watch([
-        'public/app/*.js'],
-        ['compressCartApp']);
+        gulp.series('compressScripts'));
 
 });
 
-gulp.task('default', ['sass', 'compressScripts', 'compressCartApp', 'templates', 'watch']);
+gulp.task('default', gulp.series('sass', 'compressScripts', 'watch'));
 

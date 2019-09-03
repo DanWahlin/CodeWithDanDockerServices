@@ -2,11 +2,10 @@
 
 //3rd Party Modules
 
-var express                 = require('express'),
+const express               = require('express'),
     exphbs                  = require('express-handlebars'),
     hbsHelpers              = require('handlebars-helpers'),
     hbsLayouts              = require('handlebars-layouts'),
-    compression             = require('compression'),
     morgan                  = require('morgan'),
     bodyParser              = require('body-parser'),
     cookieParser            = require('cookie-parser'),
@@ -14,7 +13,6 @@ var express                 = require('express'),
     csurf                   = require('csurf'),
     favicon                 = require('serve-favicon'),
     merge                   = require('merge'),
-    //fs                      = require('fs'),
 
 //Local Modules 
 
@@ -32,9 +30,9 @@ var express                 = require('express'),
 //        Handlebars template registration
 //*************************************************
 
-var customHelpers = merge(customExpressHbsHelpers, hbsHelpers());
+const customHelpers = merge(customExpressHbsHelpers, hbsHelpers());
 
-var hbs = exphbs.create({
+const hbs = exphbs.create({
     extname: '.hbs',
     defaultLayout: 'master',
     helpers: customHelpers

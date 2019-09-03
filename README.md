@@ -28,7 +28,8 @@ uncomment the one mentioned for Docker Toolbox in the .docker/config/nginx.devel
 
       Note: `You MUST have Docker Desktop` for this particular demo to work or another local Kubernetes option such as Minikube.
 
-1. Do a `production` Docker Compose build (see `docker-compose.yml` for instructions on doing the build) to create the local images
+1. Do a `production` Docker Compose build (see `docker-compose.yml` for instructions on doing the build) to create the local images. Ensure that you set
+APP_ENV=production as mentioned in the compose file.
 1. Open a command-prompt at the root of the project
 1. Run the following to add the database passwords as secrets (yes - these are simple passwords for the demo :-)):
 

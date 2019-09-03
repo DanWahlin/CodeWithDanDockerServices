@@ -1,6 +1,6 @@
 'use strict';
 
-var featureRepository = require('../lib/featureRepository');
+const featureRepository = require('../lib/featureRepository');
 
 module.exports = function (router) {
 

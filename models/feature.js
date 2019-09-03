@@ -1,10 +1,10 @@
 'use strict';
 
-var mongoose        = require('mongoose'),
-    Schema          = mongoose.Schema,
-    ObjectId        = Schema.ObjectId;
+const   mongoose        = require('mongoose'),
+        Schema          = mongoose.Schema,
+        ObjectId        = Schema.ObjectId;
 
-var featureSchema = Schema({
+const featureSchema = Schema({
     isFeatured              : { type: Boolean, required: true, default: true },
     position                : { type: Number,  required: true },
     title                   : { type: String,  required: true },
@@ -19,6 +19,6 @@ var featureSchema = Schema({
     date                    : { type: Date, default: Date.now }
 });
 
-var FeatureModel = mongoose.model('feature', featureSchema, 'features');
+const FeatureModel = mongoose.model('feature', featureSchema, 'features');
 
 module.exports = FeatureModel;
