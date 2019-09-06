@@ -6,6 +6,7 @@ This is a demo application from the [Docker for Web Developers](https://www.plur
 1. Set the environment variables in your command window.
 
       `export APP_ENV=development`
+      
       `export DOCKER_ACCT=codewithdan`
 
       NOTE: For the Windows DOS command shell use `set` instead of `export`. For Windows Powershell use `$env:APP_ENV = "value"`.
