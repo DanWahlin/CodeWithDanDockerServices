@@ -37,4 +37,4 @@ spec:
         name: node-codewithdan
         ports:
         - containerPort: 8080
-        resources: 
+        resources: {}
