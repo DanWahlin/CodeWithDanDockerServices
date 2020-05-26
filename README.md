@@ -62,3 +62,19 @@ To expose a specific port for localhost for the nginx Pod, get the name of the `
 
 Note that sudo is needed to enable port 80 in this case on Mac. You can choose a different port as well such as 8081:80. 
 
+#### Running with Skaffold
+
+1. Open a command-prompt at the root of the project
+1. Run the following to add the database passwords as secrets (yes - these are simple passwords for the demo :-)):
+
+    `kubectl create secret generic db-passwords --from-literal=db-password='password' --from-literal=db-root-password='password'`
+
+    Note: `password` is being used here purely to keep things very simple for the demo. Use strong passwords for a "real" setup!!!!
+
+1. Install Skaffold from https://skaffold.dev. 
+1. Run the following command at the root of the project:
+
+      ```
+      skaffold dev
+      ```
+

@@ -1,0 +1,26 @@
+apiVersion: skaffold/v2beta4
+kind: Config
+metadata:
+  name: codewithdan-docker-services
+build:
+  artifacts:
+  - image: codewithdan/nginx
+    context: .
+    docker:
+      dockerfile: .docker/nginx.production.dockerfile
+  - image: codewithdan/node-codewithdan
+    context: .
+    docker:
+      dockerfile: .docker/node-codewithdan.production.dockerfile
+  - image: codewithdan/mongo
+    context: .
+    docker:
+      dockerfile: .docker/mongo.dockerfile
+  - image: codewithdan/redis
+    context: .
+    docker:
+      dockerfile: .docker/redis.production.dockerfile
+deploy:
+  kubectl:
+    manifests:
+    - .k8s/*.yml
