@@ -2,6 +2,20 @@
 
 This is a demo application from the [Docker for Web Developers](https://www.pluralsight.com/courses/docker-web-development) course on Pluralsight that demonstrates how multiple services can be integrated and orchestrated using Docker and Docker Compose.
 
+#### Running Docker with WSL (Windows Subsystem for Linux) on Windows?
+
+Open a WSL (Linux) command prompt and clone the repo from there into a folder of your choosing:
+
+`git clone https://github.com/danwahlin/codewithdandockerservices.git`
+
+Ensure that Node is installed into your Linux instance (see https://docs.microsoft.com/en-us/windows/nodejs/setup-on-wsl2).
+
+DO NOT clone the repo using a regular Windows command window if you're using WSL with Docker as there can be volume problems with MongoDB.
+
+Note that if you're NOT using WSL at all you can clone the repo from any Windows command prompt.
+
+#### Instructions
+
 1. Install Docker Desktop for Mac or Docker CE for Windows from https://docker.com and the lastest LTS version of Node.js from https://nodejs.org.
 1. Set the environment variables in your command window.
 
