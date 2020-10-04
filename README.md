@@ -1,8 +1,8 @@
-#### Docker Services Orchestration Demonstration (Kubernetes Orchestration demo also available)
+## Docker Services Orchestration Demonstration (Kubernetes Orchestration demo also available)
 
 This is a demo application from the [Docker for Web Developers](https://www.pluralsight.com/courses/docker-web-development) course on Pluralsight that demonstrates how multiple services can be integrated and orchestrated using Docker and Docker Compose.
 
-#### Running Docker with WSL (Windows Subsystem for Linux) on Windows?
+## Running Docker with WSL (Windows Subsystem for Linux) on Windows?
 
 Open a WSL (Linux) command prompt and clone the repo from there into a folder of your choosing. For example you can `cd` into `desktop` and put it there if you'd like.
 
@@ -12,9 +12,9 @@ Ensure that Node is installed into your Linux instance (see https://docs.microso
 
 DO NOT clone the repo using a regular Windows command window if you're using WSL with Docker as there can be volume problems with MongoDB.
 
-Note that if you're NOT using WSL at all you can clone the repo from any Windows command prompt.
+Note that if you're NOT using WSL at all with Docker on Windows then you can clone the repo from any Windows command prompt.
 
-#### Instructions
+## Instructions
 
 1. Install Docker Desktop for Mac or Docker CE for Windows from https://docker.com and the lastest LTS version of Node.js from https://nodejs.org.
 1. Set the environment variables in your command window.
@@ -31,13 +31,13 @@ Note that if you're NOT using WSL at all you can clone the repo from any Windows
 1. Visit http://localhost in a browser
 1. Live long and prosper
 
-#### Note for Docker Toolbox Users
+### Note for Docker Toolbox Users
 
 If you're on Docker Toolbox rather than Docker CE you may get an nginx gateway error when going to http://localhost. This is due
 to "localhost" being used as the server name in .docker/config/nginx.development.conf (that works for Docker Desktop - the latest version - but not for Docker Toolbox). Comment out the existing "server_name" property and
 uncomment the one mentioned for Docker Toolbox in the .docker/config/nginx.development.conf file.
 
-#### To run in Kubernetes with Docker Desktop
+### To run in Kubernetes with Docker Desktop
 
 1. Enable Kubernetes in Docker Desktop.
 
@@ -60,13 +60,13 @@ NOTE: You'll need to wait since it'll take a little bit for the DB to start up. 
 
 1. When you're done run `kubectl delete -f .k8s` to delete the Kubernetes resources. 
 
-#### Local Storage Hostname Volume
+### Local Storage Hostname Volume
 
 NOTE: The local storage hostname volume is commented out in the `.k8s/mongo.deployment.yml` StatefulSet because MongoDB doesn't support that type of volume
 correctly on Docker for Windows. It does work on Mac/Linux. You'd need to create a `/tmp/data/db` directory and then uncomment the
 `volumes` and `volumeMounts` properties (and sub-properties) in the StatefulSet to actually use the volume on Mac/Linux.
 
-#### Load Balancer versus Port Forwarding
+### Load Balancer versus Port Forwarding
 
 This demo includes a LoadBalancer service for the nginx Pod which is why you can hit http://localhost. 
 To expose a specific port for localhost for the nginx Pod, get the name of the `nginx` pod by running 
@@ -76,7 +76,7 @@ To expose a specific port for localhost for the nginx Pod, get the name of the `
 
 Note that sudo is needed to enable port 80 in this case on Mac. You can choose a different port as well such as 8081:80. 
 
-#### Running with Skaffold
+### Running with Skaffold
 
 1. Open a command-prompt at the root of the project
 1. Run the following to add the database passwords as secrets (yes - these are simple passwords for the demo :-)):
