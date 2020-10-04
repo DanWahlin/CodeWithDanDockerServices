@@ -4,7 +4,7 @@ This is a demo application from the [Docker for Web Developers](https://www.plur
 
 #### Running Docker with WSL (Windows Subsystem for Linux) on Windows?
 
-Open a WSL (Linux) command prompt and clone the repo from there into a folder of your choosing:
+Open a WSL (Linux) command prompt and clone the repo from there into a folder of your choosing. For example you can `cd` into `desktop` and put it there if you'd like.
 
 `git clone https://github.com/danwahlin/codewithdandockerservices.git`
 
