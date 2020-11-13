@@ -8,7 +8,7 @@ Open a WSL (Linux) command prompt and clone the repo from there into a folder of
 
 `git clone https://github.com/danwahlin/codewithdandockerservices.git`
 
-Ensure that Node is installed into your Linux instance (see https://docs.microsoft.com/en-us/windows/nodejs/setup-on-wsl2).
+Ensure that Node is installed into your Linux instance (see https://docs.microsoft.com/windows/nodejs/setup-on-wsl2?WT.mc_id=m365-0000-dwahlin).
 
 DO NOT clone the repo using a regular Windows command window if you're using WSL with Docker as there can be volume problems with MongoDB.
 
