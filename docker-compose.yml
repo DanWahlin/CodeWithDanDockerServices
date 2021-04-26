@@ -10,6 +10,9 @@
 
     #    For the standard Windows DOS command shell use `set` instead of `export` for environment variables.
     #    For Windows Powershell use `$env:APP_ENV = "value"`.
+
+    #    $env:APP_ENV="development" or $env:APP_ENV="production"
+    #    $env:DOCKER_ACCT="codewithdan"
     
     # 3. Remove "node" service `volume` (below) if doing a production build
     # 4. Run docker-compose build
