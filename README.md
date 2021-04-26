@@ -10,20 +10,22 @@ Open a WSL (Linux) command prompt and clone the repo from there into a folder of
 
 Ensure that Node is installed into your Linux instance (see https://docs.microsoft.com/windows/nodejs/setup-on-wsl2?WT.mc_id=m365-0000-dwahlin).
 
-DO NOT clone the repo using a regular Windows command window if you're using WSL with Docker as there can be volume problems with MongoDB.
-
 Note that if you're NOT using WSL at all with Docker on Windows then you can clone the repo from any Windows command prompt.
 
 ## Instructions
 
-1. Install Docker Desktop for Mac or Docker CE for Windows from https://docker.com and the lastest LTS version of Node.js from https://nodejs.org.
+1. Install Docker Desktop for Mac or Docker Desktop for Windows from https://docker.com and the lastest LTS version of Node.js from https://nodejs.org.
 1. Set the environment variables in your command window.
 
       `export APP_ENV=development`
       
       `export DOCKER_ACCT=codewithdan`
 
-      NOTE: For the Windows DOS command shell use `set` instead of `export`. For Windows Powershell use `$env:APP_ENV = "value"`.
+      NOTE: For the Windows DOS command shell use `set` instead of `export`. For Windows Powershell use `$env:KEY = "value"`:
+
+      `$env:APP_ENV="production"`
+
+      `$env:DOCKER_ACCT="codewithdan"`
 
 1. Run `npm install` to install the Node.js dependencies for the project (when running containers in development mode since a volume is defined docker-compose.yml file)
 1. Run `docker-compose build`
