@@ -28,7 +28,7 @@
     "handlebars": "^4.7.7",
     "handlebars-helpers": "^0.10.0",
     "handlebars-layouts": "^3.1.4",
-    "merge": "^1.2.1",
+    "merge": "^2.1.1",
     "moment": "^2.24.0",
     "mongoose": "^5.12.4",
     "morgan": "^1.9.1",
