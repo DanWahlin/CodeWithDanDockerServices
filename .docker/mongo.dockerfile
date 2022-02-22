@@ -14,7 +14,7 @@ RUN touch /.firstrun
 
 EXPOSE 27017
 
-ENTRYPOINT ["/mongo_scripts/run.sh"]
+ENTRYPOINT ["bash","/mongo_scripts/run.sh"]
 
 
 # To build:
