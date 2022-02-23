@@ -4,10 +4,9 @@ LABEL author="Dan Wahlin"
 
 WORKDIR /var/www/codewithdan
 
-# Legacy instruction being removed
+# Legacy instructions being removed
 # RUN npm install -g pm2@latest
-
-RUN mkdir -p /var/log/pm2
+# RUN mkdir -p /var/log/pm2
 
 EXPOSE 		8080
 

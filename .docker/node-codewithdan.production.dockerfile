@@ -4,17 +4,17 @@ LABEL author="Dan Wahlin"
 
 WORKDIR /var/www/codewithdan
 
-COPY ./package.json .
-COPY ./package-lock.json .
+COPY ./package.json ./package-lock.json ./
 
 ENV NODE_ENV production
 # Legacy instruction being removed
 # RUN npm install -g pm2@latest
 RUN npm install
 
-COPY    . .
+COPY . .
 
-RUN mkdir -p /var/log/pm2
+# Legacy instruction being removed
+# RUN mkdir -p /var/log/pm2
 
 EXPOSE 		8080
 
