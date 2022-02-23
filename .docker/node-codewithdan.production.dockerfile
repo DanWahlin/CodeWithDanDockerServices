@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:lts-alpine
 
 LABEL author="Dan Wahlin"
 
@@ -8,7 +8,8 @@ COPY ./package.json .
 COPY ./package-lock.json .
 
 ENV NODE_ENV production
-RUN npm install -g pm2@latest
+# Legacy instruction being removed
+# RUN npm install -g pm2@latest
 RUN npm install
 
 COPY    . .
@@ -17,7 +18,11 @@ RUN mkdir -p /var/log/pm2
 
 EXPOSE 		8080
 
-ENTRYPOINT ["pm2", "start", "server.js","--name","codewithdan","--log","/var/log/pm2/pm2.log","--watch","--no-daemon"]
+ENTRYPOINT [ "node", "server.js" ]
+
+# Legacy version:
+# ENTRYPOINT ["pm2", "start", "server.js","--name","codewithdan","--log","/var/log/pm2/pm2.log","--watch","--no-daemon"]
+
 
 
 # To build:
