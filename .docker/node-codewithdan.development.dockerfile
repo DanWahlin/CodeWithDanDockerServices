@@ -4,17 +4,9 @@ LABEL author="Dan Wahlin"
 
 WORKDIR /var/www/codewithdan
 
-# Legacy instructions being removed
-# RUN npm install -g pm2@latest
-# RUN mkdir -p /var/log/pm2
-
 EXPOSE 		8080
 
 ENTRYPOINT [ "node", "server.js" ]
-
-# Legacy version:
-# ENTRYPOINT ["pm2", "start", "server.js","--name","codewithdan","--log","/var/log/pm2/pm2.log","--watch","--no-daemon"]
-
 
 # To build:
 # docker build -f docker-node-codewithdan.dockerfile --tag codewithdan_node ../
