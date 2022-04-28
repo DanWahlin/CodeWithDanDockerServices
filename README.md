@@ -23,7 +23,7 @@ Note that if you're NOT using WSL at all with Docker on Windows then you can clo
 
       NOTE: For the Windows DOS command shell use `set` instead of `export`. For Windows Powershell use `$env:KEY = "value"`:
 
-      `$env:APP_ENV="production"`
+      `$env:APP_ENV="development"`
 
       `$env:DOCKER_ACCT="codewithdan"`
 
