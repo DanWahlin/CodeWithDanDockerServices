@@ -1,6 +1,5 @@
 #!/bin/bash
 # https://github.com/frodenas/docker-mongodb/blob/master/Dockerfile
-
 # Initialize first run
 if [[ -e /.firstrun ]]; then
     echo "Running entrypoint.sh"
