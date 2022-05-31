@@ -14,7 +14,7 @@
     #    $env:APP_ENV="development" or $env:APP_ENV="production"
     #    $env:DOCKER_ACCT="codewithdan"
     
-    # 3. Remove "node" service `volume` (below) if doing a production build
+    # 3. Remove "node" service `volume` (below) only if doing a production build
     # 4. Run docker-compose build
     # 5. Run docker-compose up
     # 6. Live long and prosper
