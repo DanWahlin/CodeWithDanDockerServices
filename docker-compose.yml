@@ -15,6 +15,7 @@
     #    $env:DOCKER_ACCT="codewithdan"
     
     # 3. Remove "node" service `volume` (below) only if doing a production build
+    #  - For development, make sure you ran `npm install` first, so that node_modules will be available on the volume for the node app to run
     # 4. Run docker-compose build
     # 5. Run docker-compose up
     # 6. Live long and prosper
