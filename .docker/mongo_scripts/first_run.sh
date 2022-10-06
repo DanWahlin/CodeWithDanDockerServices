@@ -26,14 +26,14 @@ while ! nc -vz localhost 27017; do sleep 1; done
 if [[ -n $ROOT_USER ]] && [[ -n $ROOT_PASS ]] && [[ -n $ROOT_ROLE ]]
 then
 	echo "Creating root user: \"$ROOT_USER\"..."
-	mongo $ROOT_DB --eval "db.createUser({ user: '$ROOT_USER', pwd: '$ROOT_PASS', roles: [ { role: '$ROOT_ROLE', db: '$ROOT_DB' } ] });"
+	mongosh $ROOT_DB --eval "db.createUser({ user: '$ROOT_USER', pwd: '$ROOT_PASS', roles: [ { role: '$ROOT_ROLE', db: '$ROOT_DB' } ] });"
 fi
 
 # Create Web User if there are values (-z means empty, -n means not empty)
 if [[ -n $USER ]] && [[ -n $PASS ]] && [[ -n $ROLE ]] && [[ -n $DB ]]
 then
 	echo "Creating web user: \"$USER\"..."
-	mongo $DB --eval "db.createUser({ user: '$USER', pwd: '$PASS', roles: [ { role: '$ROLE', db: '$DB' } ] });"
+	mongosh $DB --eval "db.createUser({ user: '$USER', pwd: '$PASS', roles: [ { role: '$ROLE', db: '$DB' } ] });"
 fi
 
 echo "Added MongoDB users and roles...."
