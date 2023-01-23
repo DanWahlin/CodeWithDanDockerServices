@@ -30,7 +30,7 @@ Note that if you're NOT using WSL at all with Docker on Windows then you can clo
 1. Run `npm install` to install the Node.js dependencies for the project (when running containers in development mode since a volume is defined docker-compose.yml file)
 1. Run `docker-compose build`
 1. Run `docker-compose up`
-1. Visit http://localhost in a browser
+1. Wait until everything has finished loading and then visit http://localhost in a browser. You may need to refresh a few times to see the data displayed (typically a timing issue if you try it too soon).
 1. Live long and prosper
 
 ### Note for Docker Toolbox Users

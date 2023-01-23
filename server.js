@@ -2,29 +2,31 @@
 
 //3rd Party Modules
 
-const express               = require('express'),
-    exphbs                  = require('express-handlebars'),
-    hbsHelpers              = require('handlebars-helpers'),
-    hbsLayouts              = require('handlebars-layouts'),
-    morgan                  = require('morgan'),
-    bodyParser              = require('body-parser'),
-    cookieParser            = require('cookie-parser'),
-    session                 = require('cookie-session'),
-    csurf                   = require('csurf'),
-    favicon                 = require('serve-favicon'),
-    merge                   = require('merge'),
+const express                       = require('express'),
+    exphbs                          = require('express-handlebars'),
+    hbsHelpers                      = require('handlebars-helpers'),
+    hbsLayouts                      = require('handlebars-layouts'),
+    Handlebars                      = require('handlebars'),
+    {allowInsecurePrototypeAccess}  = require('@handlebars/allow-prototype-access'),
+    morgan                          = require('morgan'),
+    bodyParser                      = require('body-parser'),
+    cookieParser                    = require('cookie-parser'),
+    session                         = require('cookie-session'),
+    csurf                           = require('csurf'),
+    favicon                         = require('serve-favicon'),
+    merge                           = require('merge'),
 
 //Local Modules 
 
-    customExpressHbsHelpers = require('./lib/hbsHelpers/expressHbsHelpers'),
-    db                      = require('./lib/database'),
-    redisClient             = require('./lib/redisClient'),
-    productTypeRepository   = require('./lib/productTypeRepository'),
-    //routes                = require('./routes/router.js'),
-    router                  = require('express-convention-routes'),
-    port                    = process.env.PORT || 8080,
-    app                     = express(),
-    config                  = require('./lib/configLoader');
+    customExpressHbsHelpers         = require('./lib/hbsHelpers/expressHbsHelpers'),
+    db                              = require('./lib/database'),
+    redisClient                     = require('./lib/redisClient'),
+    productTypeRepository           = require('./lib/productTypeRepository'),
+    //routes                        = require('./routes/router.js'),
+    router                          = require('express-convention-routes'),
+    port                            = process.env.PORT || 8080,
+    app                             = express(),
+    config                          = require('./lib/configLoader');
 
 //*************************************************
 //        Handlebars template registration
@@ -35,7 +37,8 @@ const customHelpers = merge(customExpressHbsHelpers, hbsHelpers());
 const hbs = exphbs.create({
     extname: '.hbs',
     defaultLayout: 'master',
-    helpers: customHelpers
+    helpers: customHelpers,
+    handlebars: allowInsecurePrototypeAccess(Handlebars)
 });
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
