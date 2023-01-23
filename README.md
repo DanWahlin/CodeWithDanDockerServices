@@ -30,14 +30,8 @@ Note that if you're NOT using WSL at all with Docker on Windows then you can clo
 1. Run `npm install` to install the Node.js dependencies for the project (when running containers in development mode since a volume is defined docker-compose.yml file)
 1. Run `docker-compose build`
 1. Run `docker-compose up`
-1. Wait until everything has finished loading and then visit http://localhost in a browser. You may need to refresh a few times to see the data displayed (typically a timing issue if you try it too soon).
+1. Wait until everything has finished loading in the console (may take 60 seconds or so) and then visit http://localhost in a browser. You may need to refresh a few times to see the data displayed (typically a timing issue if you try it too soon).
 1. Live long and prosper
-
-### Note for Docker Toolbox Users
-
-If you're on Docker Toolbox rather than Docker CE you may get an nginx gateway error when going to http://localhost. This is due
-to "localhost" being used as the server name in .docker/config/nginx.development.conf (that works for Docker Desktop - the latest version - but not for Docker Toolbox). Comment out the existing "server_name" property and
-uncomment the one mentioned for Docker Toolbox in the .docker/config/nginx.development.conf file.
 
 ### To run in Kubernetes with Docker Desktop
 
