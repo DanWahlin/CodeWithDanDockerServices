@@ -44,7 +44,7 @@ APP_ENV=production as mentioned in the compose file.
 1. Open a command-prompt at the root of the project
 1. Run the following to add the database passwords as secrets (yes - these are simple passwords for the demo :-)):
 
-    `kubectl create secret generic db-passwords --from-literal=db-password='password' --from-literal=db-root-password='password'`
+    `kubectl create secret generic db-passwords --from-literal=db-password=password --from-literal=db-root-password=password`
 
     Note: `password` is being used here purely to keep things very simple for the demo. Use strong passwords for a "real" setup!!!!
 
