@@ -1,15 +1,15 @@
 'use strict';
 
-var fs      = require('fs'),
-    path    = require('path'),
-    express = require('express');
+const   fs      = require('fs'),
+        path    = require('path'),
+        express = require('express');
 
-var routes = function () {
+const routes = function() {
 
     var startFolder = null,
 
     //Called once during initial server startup
-    load = function(app, folderName) {
+    load = (app, folderName) => {
 
         if (!startFolder) startFolder = path.basename(folderName);
 

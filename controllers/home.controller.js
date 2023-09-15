@@ -2,11 +2,11 @@
 
 const featureRepository = require('../lib/featureRepository');
 
-module.exports = function (router) {
+module.exports = (router) => {
 
-    router.get('/', function (req, res, next) {
+    router.get('/', (req, res, next) => {
 
-        featureRepository.getFeatures(function (err, features) {
+        featureRepository.getFeatures((err, features) => {
 
             if (err) return next(err);
 

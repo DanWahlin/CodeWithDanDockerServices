@@ -52,8 +52,8 @@ services:
         dockerfile: .docker/node-codewithdan.${APP_ENV}.dockerfile
       ports:
       - "8080"
-      volumes:
-        - .:/var/www/codewithdan
+      # volumes:
+      #   - .:/var/www/codewithdan
       working_dir: /var/www/codewithdan
       env_file:
         - ./.docker/env/app.${APP_ENV}.env
@@ -83,7 +83,7 @@ services:
         context: .
         dockerfile: .docker/redis.${APP_ENV}.dockerfile
       ports:
-        - "6379"
+        - "6379:6379"
       networks:
         - codewithdan-network
 

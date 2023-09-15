@@ -6,9 +6,9 @@ This is a demo application from the [Docker for Web Developers](https://www.plur
 
 Open a WSL (Linux) command prompt and clone the repo from there into a folder of your choosing. For example you can `cd` into `desktop` and put it there if you'd like.
 
-`git clone https://github.com/danwahlin/codewithdandockerservices.git`
+`git clone https://github.com/danwahlin/codewithdandockerservices`
 
-Ensure that Node is installed into your Linux instance (see https://docs.microsoft.com/windows/nodejs/setup-on-wsl2?WT.mc_id=m365-0000-dwahlin).
+Ensure that Node is installed into your Linux instance. [Details here](https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl?WT.mc_id=m365-0000-dwahlin).
 
 Note that if you're NOT using WSL at all with Docker on Windows then you can clone the repo from any Windows command prompt.
 
