@@ -43,9 +43,9 @@ services:
         - "443:443"
       networks:
         - codewithdan-network
+      
         
     node:
-      container_name: node-codewithdan
       image: ${DOCKER_ACCT}/node-codewithdan
       build: 
         context: .
@@ -60,8 +60,10 @@ services:
       depends_on:
         - mongo
         - redis
+      scale: 3
       networks:
         - codewithdan-network
+        
             
     mongo:
       container_name: mongo
