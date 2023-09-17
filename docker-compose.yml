@@ -60,7 +60,9 @@ services:
       depends_on:
         - mongo
         - redis
-      scale: 3
+      # scale: 3
+      deploy: 
+        replicas: 3
       networks:
         - codewithdan-network
         
