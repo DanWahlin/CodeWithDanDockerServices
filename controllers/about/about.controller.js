@@ -1,9 +1,7 @@
-"use strict";
+'use strict';
 
-module.exports = function (router) {
-
-    router.get("/", function (req, res, next) {
-		  res.render('about');
+module.exports = (router) => {
+    router.get('/', (req, res) => {
+        res.render('about');
     });
-
 };

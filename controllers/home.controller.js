@@ -3,19 +3,15 @@
 const featureRepository = require('../lib/featureRepository');
 
 module.exports = (router) => {
-
-    router.get('/', (req, res, next) => {
-
-        featureRepository.getFeatures((err, features) => {
-
-            if (err) return next(err);
-
-            res.render('index', {
-                features: features
-            });
-        });
-
+    router.get('/', async (req, res, next) => {
+        try {
+            const features = await featureRepository.getFeatures();
+            res.render('index', { features });
+        } catch (err) {
+            next(err);
+        }
     });
 };
+
 
 
