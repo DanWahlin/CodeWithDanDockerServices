@@ -3,15 +3,16 @@
   "version": "1.0.0",
   "description": "Code with Dan site",
   "author": "Dan Wahlin",
-  "main": "server.js",
+  "type": "module",
+  "main": "dist/server.js",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/DanWahlin/CodeWithDanDockerServices.git"
   },
   "scripts": {
-    "start": "node server.js",
-    "build": "vite build && tsc",
+    "start": "node dist/server.js",
+    "build": "npm run build:vite && npm run build:ts",
     "build:ts": "tsc",
     "build:vite": "vite build",
     "dev": "vite build --watch",
