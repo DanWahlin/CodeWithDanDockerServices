@@ -4,7 +4,10 @@ LABEL author="Dan Wahlin"
 
 WORKDIR /var/www/codewithdan
 
-EXPOSE 		8080
+# Run as non-root user for security
+USER node
+
+EXPOSE 8080
 
 ENTRYPOINT [ "node", "server.js" ]
 

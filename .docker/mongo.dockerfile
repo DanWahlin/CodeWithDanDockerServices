@@ -1,16 +1,20 @@
-FROM mongo
+FROM mongo:latest
 
 LABEL author="Dan Wahlin"
 
-# Make sure necessary packages are installed
-RUN apt-get update && apt-get install -y cron netcat-traditional netcat-openbsd
+# Update packages and install necessary tools
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    cron \
+    netcat-traditional \
+    netcat-openbsd && \
+    rm -rf /var/lib/apt/lists/*
 
 COPY ./.docker/mongo_scripts /mongo_scripts
 
-# chmod details: http://www.computerhope.com/unix/uchmod.
-# http://stackoverflow.com/questions/27281965/docker-file-chmod-on-entrypoint-script
-RUN chmod +rx /mongo_scripts/*.sh
-RUN touch /.firstrun
+# Set proper permissions for scripts
+RUN chmod +rx /mongo_scripts/*.sh && \
+    touch /.firstrun
 
 EXPOSE 27017
 

@@ -4,15 +4,22 @@ LABEL author="Dan Wahlin"
 
 WORKDIR /var/www/codewithdan
 
-COPY ./package.json ./package-lock.json ./
+# Copy package files first for better layer caching
+COPY --chown=node:node package.json package-lock.json ./
 
-ENV NODE_ENV production
+ENV NODE_ENV=production
 
-RUN npm install
+# Install dependencies
+RUN npm ci --omit=dev && \
+    npm cache clean --force
 
-COPY . .
+# Copy application files
+COPY --chown=node:node . .
 
-EXPOSE 		8080
+# Run as non-root user for security
+USER node
+
+EXPOSE 8080
 
 ENTRYPOINT [ "node", "server.js" ]
 
