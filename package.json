@@ -3,16 +3,20 @@
   "version": "1.0.0",
   "description": "Code with Dan site",
   "author": "Dan Wahlin",
-  "main": "server.js",
+  "type": "module",
+  "main": "dist/server.js",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/DanWahlin/CodeWithDanDockerServices.git"
   },
   "scripts": {
-    "start": "node server.js",
-    "build": "vite build",
-    "dev": "vite build --watch"
+    "start": "node dist/server.js",
+    "build": "vite build && tsc",
+    "build:ts": "tsc",
+    "build:vite": "vite build",
+    "dev": "vite build --watch",
+    "watch": "tsc --watch"
   },
   "engines": {
     "node": ">=22.0.0"
@@ -39,8 +43,19 @@
     "serve-favicon": "^2.5.1"
   },
   "devDependencies": {
+    "@types/compression": "^1.7.5",
+    "@types/connect-flash": "^0.0.40",
+    "@types/cookie-parser": "^1.4.7",
+    "@types/cookie-session": "^2.0.49",
+    "@types/csurf": "^1.11.5",
+    "@types/express": "^5.0.6",
+    "@types/morgan": "^1.9.10",
+    "@types/node": "^25.0.8",
+    "@types/serve-favicon": "^2.5.7",
     "sass": "^1.97.2",
     "terser": "^5.44.1",
+    "typescript": "^5.9.3",
     "vite": "^7.3.1"
   }
 }
+
