@@ -10,7 +10,7 @@ COPY --chown=node:node package.json package-lock.json ./
 ENV NODE_ENV=production
 
 # Install dependencies
-RUN npm ci --omit=dev && \
+RUN npm ci && \
     npm cache clean --force
 
 # Copy application files
