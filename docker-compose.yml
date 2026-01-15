@@ -20,8 +20,7 @@
     # 5. Run docker-compose up
     # 6. Live long and prosper
     
-version: "3.7"
- 
+
 services:
     nginx:
       container_name: nginx

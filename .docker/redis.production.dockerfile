@@ -1,12 +1,12 @@
-FROM 		redis:latest
+FROM redis:alpine
 
-LABEL       author="Dan Wahlin"
+LABEL author="Dan Wahlin"
 
-COPY        ./.docker/config/redis.production.conf /etc/redis.conf
+COPY ./.docker/config/redis.production.conf /etc/redis.conf
 
-EXPOSE      6379
+EXPOSE 6379
 
-ENTRYPOINT  ["redis-server", "/etc/redis.conf"]
+ENTRYPOINT ["redis-server", "/etc/redis.conf"]
 
 # To build:
 # docker build -f docker-redis.dockerfile --tag danwahlin/redis ../

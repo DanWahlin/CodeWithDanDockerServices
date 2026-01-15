@@ -4,7 +4,7 @@ LABEL author="Dan Wahlin"
 
 WORKDIR /var/www/codewithdan
 
-EXPOSE 		8080
+EXPOSE 8080
 
 ENTRYPOINT [ "node", "server.js" ]
 
