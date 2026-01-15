@@ -52,6 +52,8 @@ export interface IFeature extends Document {
  */
 export interface IProductType extends Document {
     title: string;
+    linkTitle?: string;
+    iconCssClass?: string;
     description?: string;
 }
 
@@ -59,7 +61,10 @@ export interface IProductType extends Document {
  * Category model interface
  */
 export interface ICategory extends Document {
-    name: string;
+    title?: string;
+    name?: string;
+    imageUrl?: string;
+    cssClass?: string;
     description?: string;
 }
 

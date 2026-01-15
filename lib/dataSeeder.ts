@@ -35,16 +35,22 @@ const dataSeeder = (function () {
          */
         const videoProductType = new ProductType({
             title: "Videos",
+            linkTitle: "Videos",
+            iconCssClass: "fa-play-circle",
             description: "Get the highest quality video training out there!"
         });
 
         const trainingProductType = new ProductType({
             title: "Training",
+            linkTitle: "Training",
+            iconCssClass: "fa-users",
             description: "Looking for expert onsite training for your team? We provide training on a range of technologies and have experts who know how to teach - not just talk!"
         });
 
         const trainingMaterialsProductType = new ProductType({
             title: "Courseware",
+            linkTitle: "Courseware",
+            iconCssClass: "fa-file-text",
             description: "License our top-notch courseware, hands-on labs and code samples."
         });
 
@@ -63,13 +69,15 @@ const dataSeeder = (function () {
          */
 
         const nodeCategory = new Category({
-            name: "Node.js Courses",
-            description: ""
+            title: "Node.js Courses",
+            imageUrl: "",
+            cssClass: "nodeCategory"
         });
 
         const jsCategory = new Category({
-            name: "JavaScript Courses",
-            description: ""
+            title: "JavaScript Courses",
+            imageUrl: "",
+            cssClass: "javascriptCategory"
         });
 
         try {
