@@ -8,7 +8,7 @@ const featureSchema = new Schema<IFeature>({
     text: { type: String, required: true },
     highlightText: { type: String, required: false },
     backgroundImageUrl: { type: String, required: true },
-    productId: { type: Schema.Types.ObjectId, turnOn: false, ref: 'product', required: false },
+    productId: { type: Schema.Types.ObjectId, ref: 'product', required: false },
     link: { type: String, required: false },
     linkText: { type: String, required: false },
     customCssClass: { type: String, required: false },
