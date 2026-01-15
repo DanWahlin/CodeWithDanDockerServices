@@ -27,8 +27,10 @@ $seeit-section-mobile-height: 600px;
 $background-manrocks-1990-jpg: '/img/background_manrocks_1920x500.jpg';
 $background-girl-1990-jpg: '/img/background_girl_1920x500.jpg';
 
+@use 'sass:math';
+
 @function em($px, $base: $base-font-size) {
-    @return ($px / $base) * 1em;
+    @return math.div($px, $base) * 1em;
 }
 
 body {
@@ -196,7 +198,7 @@ main {
 }
 
 .feature-item-vertically-center {
-  padding-top: $subpage-height/6;
+  padding-top: math.div($subpage-height, 6);
 }
 
 .feature-section-content {

@@ -9,7 +9,6 @@ const express                       = require('express'),
     Handlebars                      = require('handlebars'),
     {allowInsecurePrototypeAccess}  = require('@handlebars/allow-prototype-access'),
     morgan                          = require('morgan'),
-    bodyParser                      = require('body-parser'),
     cookieParser                    = require('cookie-parser'),
     session                         = require('cookie-session'),
     csurf                           = require('csurf'),
@@ -58,8 +57,9 @@ app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
 
 app.use(cookieParser());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+// Express 5 has built-in body parsing, no need for body-parser package
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(session({
     keys: ['some*key']
 }));
@@ -94,7 +94,7 @@ app.use(function(req, res, next) {
 
 app.use(function(err, req, res, next) {
     console.error(err.stack);
-    res.send(500, { message: err.message });
+    res.status(500).send({ message: err.message });
 });
 
 process.on('uncaughtException', function(err) {

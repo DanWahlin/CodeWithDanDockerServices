@@ -1,0 +1,2 @@
+var e;e=jQuery,codeWithDan.helpers.isMobile()||codeWithDan.helpers.isIE()||(e(document).ready(function(){var t=e(window),o=[];e(".parallax").each(function(){o.push({item:e(this),speed:e(this).attr("data-speed")})}),t.scroll(function(){for(var e=0;e<o.length;e++){var a=o[e],n=a.item,s=a.speed?a.speed:5,c="50% "+-(t.scrollTop()-n.offset().top)/s+"px";n.css({backgroundPosition:c})}})}),document.createElement("article"),document.createElement("section"));
+//# sourceMappingURL=parallax.js.map

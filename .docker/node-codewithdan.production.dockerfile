@@ -1,4 +1,4 @@
-FROM node:lts-alpine
+FROM node:22-alpine
 
 LABEL author="Dan Wahlin"
 
