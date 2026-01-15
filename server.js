@@ -121,10 +121,16 @@ router.load(app, {
 });
 
 // 404 handler - must be last
-app.use((req, res) => {
+app.use((req, res, next) => {
     const err = new Error('Not Found');
     err.status = 404;
-    res.render('errors/404', err);
+    
+    res.render('errors/404', err, (renderErr) => {
+        if (renderErr) {
+            console.error('Error rendering 404 page:', renderErr);
+            res.status(404).send('Not Found');
+        }
+    });
 });
 
 //*************************************************
